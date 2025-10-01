@@ -22,3 +22,8 @@ print("=" * 100)
 #EXEMPLO 3
 for contador in range(0, 21, 2):
     print(contador,end=", ")
+  
+print("\n")   
+#EX001
+for contador in range(10, 501, 10):
+    print(contador,end=", ")
