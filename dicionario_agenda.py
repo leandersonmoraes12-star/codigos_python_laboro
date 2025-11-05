@@ -1,28 +1,28 @@
 agenda = dict()# inicializando um dicionário
 
-while True:
-    print("\nAgenda Eletrônica\n")
-    print("1- Inserir dados na agenda")
-    print("2- Excluir dados da agenda")
-    print("3- Consultar todos os dados da agenda")
-    print("4- Sair do sistema")
-    resposta = int(input("Qual sua escolha: "))
+#Função Menu
+def menu():
+     print("\nAgenda Eletrônica\n")
+     print("1- Inserir dados na agenda")
+     print("2- Excluir dados da agenda")
+     print("3- Consultar todos os dados da agenda")
+     print("4- Sair do sistema")
 
-    if resposta == 1:
-        try:
-            nome = input("Qual o nome do contato: ")
-            agenda[nome] = int(input(f"Qual o número de {nome}: "))
+# Função inserir dados
+def inserir():
+    try:
+        nome = input("Qual o nome do contato: ")
+        agenda[nome] = int(input(f"Qual o número de {nome}: "))
             
-            print("Contato inserido com sucesso!")
-            print(agenda)
+        print("Contato inserido com sucesso!")
+        print(agenda)
             
-        except Exception:
+    except Exception:
             print("Operação inválida. Contato não salvo.")
 
-    elif resposta == 2:
-        print(agenda)
-        escolha = input("Qual o nome do contato para excluir: ")
-        
+
+#Função excluir os dados
+def excluir(escolha):
         # Verificando se o contato existe antes de excluir
         if escolha in agenda:        
             del agenda[escolha]
@@ -31,13 +31,30 @@ while True:
 
         else:
             print(f"O contato {escolha} não existe na agenda")
+
+# Função consultar dados
+def consultar():
+    for chave, valor in agenda.items():
+        print(f"{chave} : {valor}")
+       
+    
+while True:
+    menu()
+    resposta = int(input("Qual sua escolha: "))
+
+    if resposta == 1:
+       inserir() 
+
+    elif resposta == 2:
+        print(agenda)
+        escolha = input("Qual o nome do contato para excluir: ")
+        
+            
+        excluir(escolha)
             
     elif resposta == 3:
-        for chave, valor in agenda.items():
-            print(f"{chave} : {valor}")
+        consultar()
         
-
-
     elif resposta == 4:
         print("Sistema Encerrado")
         break
